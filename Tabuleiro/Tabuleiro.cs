@@ -4,23 +4,23 @@
     {
         public int Linhas { get; set; }
         public int Colunas { get; set; }
-        private Peca[,]? Pecas;
+        private Peca[,]? _pecas;
 
         public Tabuleiro(int linhas, int colunas)
         {
             Linhas = linhas;
             Colunas = colunas;
-            Pecas = new Peca[Linhas, Colunas];
+            _pecas = new Peca[Linhas, Colunas];
         }
 
         public Peca Peca(int linha, int coluna)
         {
-            return Pecas![linha, coluna];
+            return _pecas![linha, coluna];
         }
 
         public Peca Peca(Posicao posicao)
         {
-            return Pecas![posicao.Linha, posicao.Coluna];
+            return _pecas![posicao.Linha, posicao.Coluna];
         }
 
         public bool ExistePeca(Posicao posicao)
@@ -36,8 +36,20 @@
                 throw new TabuleiroException("Já existe uma peça nessa posição!");
             }
 
-            Pecas![posicao.Linha, posicao.Coluna] = p;
+            _pecas![posicao.Linha, posicao.Coluna] = p;
             p.Posicao = posicao;
+        }
+
+        public Peca RetirarPeca(Posicao posicao)
+        {
+            if (Peca(posicao) == null)
+            {
+                return null!;
+            }
+            Peca aux = Peca(posicao);
+            aux.Posicao = null;
+            _pecas![posicao.Linha, posicao.Coluna] = null!;
+            return aux;
         }
 
         public bool PosicaoValida(Posicao posicao)
