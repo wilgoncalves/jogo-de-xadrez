@@ -16,7 +16,7 @@ namespace pecas_xadrez
         private bool PodeMover(Posicao posicao)
         {
             Peca peca = Tabuleiro!.Peca(posicao);
-            return peca != null || peca!.Cor != Cor;
+            return peca == null || peca!.Cor != Cor;
         }
 
         public override bool[,] MovimentosPossiveis()
@@ -26,7 +26,7 @@ namespace pecas_xadrez
             Posicao posicao = new Posicao(0, 0);
 
             //Acima:
-            posicao.DefinirValores(posicao.Linha - 1, posicao.Coluna);
+            posicao.DefinirValores(Posicao!.Linha - 1, Posicao.Coluna);
            while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
            {
                 mat[posicao.Linha, posicao.Coluna] = true;
@@ -38,7 +38,7 @@ namespace pecas_xadrez
            }
 
             //Abaixo:
-            posicao.DefinirValores(posicao.Linha + 1, posicao.Coluna);
+            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
             while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
@@ -50,7 +50,7 @@ namespace pecas_xadrez
             }
 
             //Direita:
-            posicao.DefinirValores(posicao.Linha, posicao.Coluna + 1);
+            posicao.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
             while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
@@ -62,7 +62,7 @@ namespace pecas_xadrez
             }
 
             //Esquerda:
-            posicao.DefinirValores(posicao.Linha, posicao.Coluna - 1);
+            posicao.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
             while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
@@ -70,7 +70,7 @@ namespace pecas_xadrez
                 {
                     break;
                 }
-                posicao.Linha = posicao.Linha - 1;
+                posicao.Coluna = posicao.Coluna - 1;
             }
             return mat;
         }

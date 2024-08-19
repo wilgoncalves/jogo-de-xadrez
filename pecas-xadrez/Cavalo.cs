@@ -8,6 +8,11 @@ namespace pecas_xadrez
         {
         }
 
+        public override bool[,] MovimentosPossiveis()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             return "C";
