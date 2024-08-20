@@ -81,6 +81,7 @@ namespace pecas_xadrez
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
+
             return mat;
         }
     }

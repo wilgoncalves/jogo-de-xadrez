@@ -72,6 +72,7 @@ namespace pecas_xadrez
                 }
                 posicao.Coluna = posicao.Coluna - 1;
             }
+
             return mat;
         }
     }
