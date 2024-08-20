@@ -37,7 +37,8 @@ try
         }
 
     }
-
+    Console.Clear();
+    Tela.ImprimirPartida(partida);
 }
 catch (TabuleiroException e)
 {
